@@ -1,0 +1,144 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #f9f9f9;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  color: #1f4e79;
+}
+
+.user-info {
+  font-weight: 600;
+  margin-right: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.logout-btn {
+  background-color: #d9534f;
+  border: none;
+  color: white;
+  padding: 7px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c;
+}
+
+.tab-buttons {
+  margin-bottom: 20px;
+}
+
+.tab-buttons button {
+  background-color: #85aeeb;
+  border: none;
+  padding: 10px 18px;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background-color: #1f4e79;
+  color: white;
+}
+
+.table-wrapper {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.1);
+  overflow-x: auto;
+}
+
+.filters {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  min-width: 130px;
+}
+
+/* Tablo */
+.sensor-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  min-width: 700px;
+}
+
+.sensor-table th,
+.sensor-table td {
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sensor-table th {
+  background-color: #3498db;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sensor-table tr:hover {
+  background-color: #f2f9ff;
+  transition: background-color 0.3s;
+}
+
+.sensor-table tr:nth-child(even) {
+  background-color: #fbfcfd;
+}
+
+.danger-row {
+  background-color: #ffe6e6 !important;
+  color: #a20000;
+  font-weight: bold;
+}
+
+.sensor-table tbody tr:hover {
+  background-color: #f5f9ff;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button.logout-btn {
+  font-size: 13px;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
