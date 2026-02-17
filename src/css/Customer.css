@@ -1,85 +1,244 @@
+/* ═══════════════════════════════════════════════════
+   CUSTOMER — Registration & Login
+   ═══════════════════════════════════════════════════ */
 .customer-page {
-  max-width: 720px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
+  animation: fadeInUp 0.5s var(--ease-out);
 }
 
-.info-card,
-.form-card,
-.login-card,
-.welcome-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
+.customer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
 }
 
-.info-card:hover,
-.form-card:hover,
-.login-card:hover {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+/* ── Left Panel (Branding) ── */
+.customer-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
 }
 
-form label {
-  display: block;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  font-size: 0.95rem;
+.customer-brand::before {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-textarea {
+.brand-content {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+}
+
+.brand-icon {
+  font-size: 48px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.brand-content h1 {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+}
+
+.brand-content h1 .gradient-text {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-content p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.brand-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.brand-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.brand-feature svg {
+  color: var(--accent);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Right Panel (Forms) ── */
+.customer-forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+  background: var(--bg-primary);
+  overflow-y: auto;
+}
+
+.form-container {
+  max-width: 420px;
+  margin: 0 auto;
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1.5px solid #ccc;
-  border-radius: 10px;
-  font-size: 1rem;
-  margin-top: 0.4rem;
-  box-sizing: border-box;
-  resize: vertical;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fdfdfd;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
-  outline: none;
+/* ── Tab Switcher ── */
+.form-tabs {
+  display: flex;
+  background: var(--bg-input);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
 }
 
-button {
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+.form-tab {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 14px;
   font-weight: 600;
-  font-size: 1rem;
-  background-color: #3b82f6;
-  color: white;
+  color: var(--text-muted);
+  background: transparent;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.1s ease;
+  transition: all var(--duration-base) var(--ease-out);
 }
 
-button:hover {
-  background-color: #2563eb;
-  transform: translateY(-1px);
+.form-tab.active {
+  background: var(--grad-accent);
+  color: white;
+  box-shadow: 0 2px 8px var(--accent-glow);
 }
 
-button:active {
-  transform: scale(0.98);
+.form-tab:not(.active):hover {
+  color: var(--text-primary);
 }
 
-.login-subtext {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  color: #666;
+/* ── Form Header ── */
+.form-header {
+  margin-bottom: 24px;
+}
+
+.form-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-header p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ── Form Card ── */
+.form-section {
+  animation: fadeInUp 0.3s var(--ease-out);
+}
+
+/* ── OTP Input ── */
+.otp-sent-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--info-glow);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--info);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.otp-input {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  padding: 14px 16px;
+}
+
+/* ── Resend ── */
+.resend-section {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.resend-btn:disabled {
+  color: var(--text-faint);
+  cursor: not-allowed;
+}
+
+.resend-btn:not(:disabled):hover {
+  text-decoration: underline;
+}
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media (max-width: 900px) {
+  .customer-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .customer-brand {
+    padding: 40px 24px;
+  }
+
+  .brand-content h1 {
+    font-size: 28px;
+  }
+
+  .brand-features {
+    display: none;
+  }
+
+  .customer-forms {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-brand {
+    padding: 32px 16px;
+  }
+
+  .customer-forms {
+    padding: 24px 16px;
+  }
+
+  .form-tabs {
+    margin-bottom: 24px;
+  }
 }
